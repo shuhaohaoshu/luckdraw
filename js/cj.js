@@ -16,65 +16,29 @@ var runing = true;
 var num = 0; //随机数存储
 var t;//循环调用
 var pdnum = pcount;//参加人数判断是否抽取完
-//登录限制
-$.ajax({
-	url:"/api/lottery/is-login",
-	success:function(e){
-		if(e.state){ //验证登录
-			if(e.data.is_login==0){
-				layer.prompt({
-					title: '请输入密码', 
-					btn: ['确定'],
-					closeBtn:0,
-					formType: 1
-				}, function(pass, index){
-					$.ajax({
-						url:"/api/lottery/login?password="+pass,
-						success:function(e){
-							if(e.state){ //登录成功
-								layer.close(index);
-								getList();
-							}else{ //登录失败
-								layer.msg(e.msg);
-							}
-						}
-					})
-				});
-			}else{
-				getList();
-			}
-		}else{ //验证登录
-			layer.msg(e.msg);
-		}
-	}
-});
+var data = JSON.parse(localStorage.getItem('LUCKDRAW')) || [];//缓存数据
+
 //获取抽奖数据初始化
-function getList(){
-	$.ajax({
-		url:"/api/lottery/lists",
-		success:function(e){
-			var list = e.data;
-			if(list.length!=0){
-				for(var i  = 0;i<list.length ;i++){
-					$('.zjmd_bt_xy').append("<div>"+
-						"<img src='./images/delete.png' class='delete'>"+
-						"<span class='zjmd_num'>"+list[i]+"</span>"+
-						"<span>.</span>"+
-					"</div>");
-					if(i<5){
-						$('.conbox').append("<p>"+list[i]+"</p>");
-					}
-					xinm[$.inArray(list[i], xinm)] = "";
-				}
-				$('.lucknum').css('display','none');
-				$(".conbox p:last").addClass("span");
-				var zjnum = $('.zjmd_bt_xy>div');
-				if(zjnum.length == pdnum){
-					$("#btntxt").addClass("btn_none").html('抽奖');
-				}
-			}
+if(data.length!=0){
+	for(var i  = 0;i<data.length ;i++){
+		$('.zjmd_bt_xy').append("<div>"+
+			"<img src='./images/delete.png' class='delete'>"+
+			"<span class='zjmd_num'>"+data[i]+"</span>"+
+			"<span>.</span>"+
+		"</div>");
+		if(i<5){
+			$('.conbox').append("<p>"+data[i]+"</p>");
 		}
-	});
+		xinm[$.inArray(data[i], xinm)] = "";
+	}
+	$('.lucknum').css('display','none');
+	$(".conbox p:last").addClass("span");
+	var zjnum = $('.zjmd_bt_xy>div');
+	if(zjnum.length == pdnum){
+		$("#btntxt").addClass("btn_none").html('抽奖');
+	}
+}else{
+	localStorage.setItem('LUCKDRAW',JSON.stringify([]));
 }
 
 var isClick = true;
@@ -165,9 +129,8 @@ function bzd() {
 		"<span>.</span>"+
 	"</div>");
 	//添加抽中号码
-	$.ajax({
-		url:"/api/lottery/draw?number="+xinm[num],
-	})
+	data.unshift(xinm[num]);
+	localStorage.setItem('LUCKDRAW',JSON.stringify(data));
     //将已中奖者从数组中"删除",防止二次中奖
 	xinm[$.inArray(xinm[num], xinm)] = "";
 }
@@ -183,17 +146,10 @@ $('.zjmd_bt_xy').on('click','.delete',function(){
 		btn: ['确定','取消'] //按钮
 	  }, function(){
 		var num = $(self).next().html();
-		$.ajax({
-			url:"/api/lottery/remove?number="+num,
-			success:function(e){
-				if(e.state){ //删除成功
-					$(self).parent().remove();
-					location.reload();
-				}else{ //删除失败
-					layer.msg(e.msg);
-				}
-			}
-		})
+		$(self).parent().remove();
+		data.splice(data.indexOf(num),1);
+		localStorage.setItem('LUCKDRAW',JSON.stringify(data));
+		location.reload();
 	  }, function(){
 		
 	});
@@ -204,17 +160,8 @@ $('.reset').click(function(){
 		title:'提示',
 		btn: ['确定','取消'] //按钮
 	  }, function(){
-		$.ajax({
-			url:"/api/lottery/reset",
-			success:function(e){
-				if(e.state){ //重置成功
-					layer.msg('重置成功');
-					location.reload();
-				}else{ //重置失败
-					layer.msg(e.msg);
-				}
-			}
-		});
+		localStorage.setItem('LUCKDRAW',JSON.stringify([]));
+		location.reload();
 	  }, function(){
 		
 	});
