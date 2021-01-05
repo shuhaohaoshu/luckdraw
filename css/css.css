@@ -1,0 +1,265 @@
+@charset "utf-8";
+
+@font-face{
+	font-family:myFirstFont;
+	src: url('./DIN-Medium.otf');
+}
+/* 起始样式 */
+body {font-family:myFirstFont;  margin:0 auto; padding:0px; height:100%; line-height:22px; width:100%; font-size:14px; background:#f5f5f5; color:#4c4c4c;}
+ul,ul li,ol li,tr td,dl,dd{ list-style-type:none; margin:0; padding:0; }
+p{ margin:0; padding:0}
+.clear{ clear:both; height:0px; line-height:0px; font-size:0px;}
+a{ color:#4c4c4c; text-decoration:none; cursor:pointer; -webkit-transition: all .3s; -moz-transition: all .3s; transition: all .3s;}
+/*a:hover{ text-decoration:underline;}*/
+img{ vertical-align:middle;}
+.imgs{ vertical-align:top;}
+.lf{ float:left;}
+.rg{ float:right;}  
+img{border:none;}
+html{ overflow-x:hidden; overflow:hidden;}
+.text,textarea,select{ outline:none; font-family:myFirstFont; color:#666; font-size:12px; width:100%;}
+.ul_lf li,.ul_js li{ position:relative;}
+::-webkit-scrollbar{ width:8px;}
+::-webkit-scrollbar-thumb{ background:#ccc;}
+::-webkit-scrollbar-track{ background:#fff;}
+::-webkit-input-placeholder{ color:#ccc;}
+
+.moblie_exhi,.BMap_mask,.BMap_stdMpZoom,.BMap_stdMpPan,.BMap_cpyCtrl,.BMap_scaleTxt,.BMap_scaleCtrl,.BMap_omCtrl,.anchorBL,#ascrail2000-hr{ display:none !important;}
+.a_txt,.nav_ipad,.moblie_head,.none{ display:none;}
+.div_scroll{ overflow:auto;}
+/*-webkit-filter: blur(0px); filter: blur(0px);*/
+/*active*/
+/* 公用样式 */
+body{ background:#000;}
+.bg{ position:fixed; bottom:0px; left:0px; width:100%; height:100%; text-align:center; background:url(../images/bg.jpg) center top no-repeat; background-size:cover;}
+.dog{ position:absolute; top:27%; width:15%; left:20%; z-index:100;z-index: 10;}
+.dog img{ width:100%;}
+.reward{ position:absolute; top:0px; width:10.67%; right:23.07%;}
+.reward img{ width:100%;}
+.turntable{ position:absolute; top:10%; width:36.08%; left:29.96%;z-index: 9;}
+.turntable .img{ width:100%; height:100%; border-radius:100%; box-shadow: 0px 0px 30px 20px rgba(0, 0, 0, 0.1)}
+.jz{ position:absolute; top:41%; left:40.5%; width: 18%; margin:0 auto; text-align:center;z-index: 9;}
+.jz img{ width:100%; vertical-align:top;}
+.jz span{ display:inline-block; width:100%; line-height:1.2rem; color:#f05654; font-size:1.2rem; font-weight:bold; font-family:myFirstFont}
+.btn{ position:absolute; top:64%; width:11.45%; left:42.275%;z-index: 10;}
+.start,.stop{ font-weight: 600;background:url(../images/1_07.png) center top no-repeat; display:block; width:2.2rem; height:0.7rem; background-size:100%; text-align:center; cursor:pointer; line-height:0.67rem; font-size:0.3rem; color:#f05654; margin-top:5%; -webkit-transition: all .3s; -moz-transition: all .3s; transition: all .3s;}
+.btn_none{ background:url(../images/1_07.png) center top no-repeat; background-size:100%;}
+.confirmbox{ width:35%; position:absolute; right:34.5%; bottom:10.5%;z-index: 10;}
+.confirmbox .bg_img img{ width:100%; position:relative;}
+.confirmbox .box{ position:absolute; top:27%; left:0px; width:100%; text-align:center; color:#fff;}
+.confirmbox .box .title{ color:#fff; font-size:0.16rem; text-align:center; line-height:0.25rem; font-weight:bold; margin-bottom:0.5%;}
+.confirmbox .conbox { width: 100%; text-align:center;}
+.confirmbox .conbox p{ display:inline-block;line-height:0.37rem; padding-right:3.5%; margin-right:3.5%; font-size:0.35rem; font-family:myFirstFont;}
+.confirmbox .conbox .span{ margin-right:0px; padding-right:0px; background:none;}
+.confirmbox .lucknum span{ display:inline-block;line-height:0.37rem; padding-right:3.5%; margin-right:3.5%; font-size:0.35rem; font-family:myFirstFont;}
+.confirmbox .lucknum .span{ margin-right:0px; padding-right:0px; background:none;}
+.zjmd{ position:absolute; top:13.5%; width:19%; right:5%; z-index: 9;}
+.zjmd .title { color: seagreen;margin: 0 4%;font-size:0.25rem; text-align:center; line-height:0.36rem; padding-top:5%; font-weight:bold;padding-bottom:0.2rem;background:#fff; }
+.zjmd .div1{  color:#f05654;margin: 0 4%;padding-left:5%; padding-bottom: 5%;position:relative;background:#fff; }
+.zjmd img{
+	width: 100%;
+	height: auto;
+	position: relative;
+}
+.layui-layer-btn .layui-layer-btn0{
+	background-color: #f05654!important;
+	border-color: #f05654!important;
+}
+.edit{
+	color:#f05654;
+	font-size:0.2rem;
+	cursor: pointer;
+	font-weight: 600;
+	position: absolute;
+	right: 0;
+	z-index: 10;
+}
+.table-bottom{
+	background-color: #f05654;
+	height: 18px;
+}
+@-webkit-keyframes rotate {
+	from {
+	-webkit-transform:rotate(0deg)
+}
+to {
+	-webkit-transform:rotate(360deg)
+}
+}
+@keyframes  rotate {
+	from {
+	-webkit-transform:rotate(0deg)
+}
+to {
+	-webkit-transform:rotate(360deg)
+}
+}
+@-moz-keyframes rotate {
+	from {
+	-moz-transform:rotate(0deg)
+}
+to {
+	-moz-transform:rotate(360deg)
+}
+}
+@-ms-keyframes rotate {
+	from {
+	-ms-transform:rotate(0deg)
+}
+to {
+	-ms-transform:rotate(360deg)
+}
+}
+@-o-keyframes rotate {
+	from {
+	-o-transform:rotate(0deg)
+}
+to {
+	-o-transform:rotate(360deg)
+}
+}
+
+.zjmd_bt_xy{
+	height: 4rem;
+	overflow-y: scroll;
+}
+.zjmd_bt_xy>div{
+	display:inline-block;
+	line-height:0.37rem; 
+	padding-right:3.3%;
+	margin-right: 1%;  
+	font-size:0.35rem; 
+	font-family:myFirstFont;
+	position: relative;
+}
+.zjmd_bt_xy>div>img{
+	width: 0.2rem;
+	height: auto;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	display: none;
+	z-index: 9;
+}
+.show{
+	display: block!important;
+}
+.reset{
+	position: absolute;
+	right: 5%;
+	bottom: 5%;
+	z-index: 9;
+	background:url(../images/1_07.png) center no-repeat; 
+	width:1rem; 
+	background-size:100%; 
+	text-align:center; 
+	cursor:pointer; 
+	line-height:0.4rem; 
+	font-size:0.2rem; 
+	color:#f05654;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.layui-layer-input{
+	outline: none;
+}
+
+#audio_btn {
+	position: absolute;
+	top: 15%;
+	left: 5%;
+	width: 0.35rem;
+	height: 0.35rem;
+	background-image: url('../images/music.png');
+	background-size: contain;
+	cursor: pointer;
+	z-index: 9;
+}
+	
+.rotate {
+	-webkit-animation: rotating 1.2s linear infinite;
+	-moz-animation: rotating 1.2s linear infinite;
+	-o-animation: rotating 1.2s linear infinite;
+	animation: rotating 1.2s linear infinite
+}
+
+@-webkit-keyframes rotating {
+	from { -webkit-transform: rotate(0) }
+	to { -webkit-transform: rotate(360deg) }
+}
+
+@keyframes rotating {
+	from { transform: rotate(0) }
+	to { transform: rotate(360deg) }
+}
+@-moz-keyframes rotating {
+	from { -moz-transform: rotate(0) }
+	to { -moz-transform: rotate(360deg) }
+}
+@-ms-keyframes rotating {
+	from { -moz-transform: rotate(0) }
+	to { -moz-transform: rotate(360deg) }
+}
+@-o-keyframes  rotating {
+	from { -moz-transform: rotate(0) }
+	to { -moz-transform: rotate(360deg) }
+}
+
+@-webkit-keyframes snow{
+	0% {
+		background-position: 0 0, 0 0;
+	}
+	100% {
+		background-position: 500px 500px, 1000px 500px;
+	}
+}
+@keyframes snow{
+	0% {
+		background-position: 0 0, 0 0;
+	}
+	100% {
+		background-position: 500px 500px, 1000px 500px;
+	}
+}
+@-moz-keyframes snow{
+	0% {
+		background-position: 0 0, 0 0;
+	}
+	100% {
+		background-position: 500px 500px, 1000px 500px;
+	}
+}
+@-ms-keyframes snow{
+	0% {
+		background-position: 0 0, 0 0;
+	}
+	100% {
+		background-position: 500px 500px, 1000px 500px;
+	}
+}
+@-o-keyframes  snow{
+	0% {
+		background-position: 0 0, 0 0;
+	}
+	100% {
+		background-position: 500px 500px, 1000px 500px;
+	}
+}
+.snow{
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url('../images/snow1.png'),url('../images/snow2.png');
+	animation: 10s snow linear infinite;
+}
+
+
+
+
+
+
